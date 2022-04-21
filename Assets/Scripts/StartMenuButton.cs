@@ -12,7 +12,7 @@ public class StartMenuButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MainManager.HighScoreText.text = "David";
+
     }
 
     // Update is called once per frame
