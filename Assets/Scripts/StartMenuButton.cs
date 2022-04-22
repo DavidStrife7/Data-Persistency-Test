@@ -23,7 +23,7 @@ public class StartMenuButton : MonoBehaviour
 
     public void OnButtonPress()
     {
-        //playerName = inputField.GetComponent<InputField>().text;
+        GameManager.GMinstance.playerName = inputField.GetComponent<InputField>().text;
         SceneManager.LoadScene("main");
     }
 }

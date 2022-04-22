@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GMinstance;
-    public string saveDataName;
+    public string saveDataName = "No High Score";
+    public string playerName = "No High Score";
     public int score;
 
     private void Awake()
@@ -32,12 +33,15 @@ public class GameManager : MonoBehaviour
     public void SaveNewHighScore(int newScore)
     {
         SaveData newData = new SaveData();
-        newData.SaveName = saveDataName;
+        newData.SaveName = playerName;
         newData.SavedHighScore = newScore;
 
         string json = JsonUtility.ToJson(newData);
 
         File.WriteAllText(Application.persistentDataPath + "/savedata.json", json);
+
+        saveDataName = playerName;
+        score = newScore;
     }
 
     public void LoadBestScore()
