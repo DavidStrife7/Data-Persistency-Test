@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GMinstance;
-    public string playerName;
     public string saveDataName;
     public int score;
 
@@ -19,6 +18,8 @@ public class GameManager : MonoBehaviour
         }
         GMinstance = this;
         DontDestroyOnLoad(gameObject);
+
+        LoadBestScore();
     }
 
     [System.Serializable]
@@ -28,11 +29,11 @@ public class GameManager : MonoBehaviour
         public int SavedHighScore;
     }
 
-    public void SaveNewHighScore()
+    public void SaveNewHighScore(int newScore)
     {
         SaveData newData = new SaveData();
         newData.SaveName = saveDataName;
-        newData.SavedHighScore = score;
+        newData.SavedHighScore = newScore;
 
         string json = JsonUtility.ToJson(newData);
 
